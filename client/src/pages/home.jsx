@@ -10,6 +10,7 @@ export const Home = () => {
   // console.log({ cookies });
   const userID = useGetUserID();
   // console.log(userID);
+  console.log({ recipes });
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
@@ -36,7 +37,9 @@ export const Home = () => {
         console.error(err);
       }
     };
-    fetchSavedRecipe();
+    if (userID) {
+      fetchSavedRecipe();
+    }
     fetchRecipe();
   }, []);
   // console.log(recipes);
