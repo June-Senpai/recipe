@@ -36,8 +36,7 @@ export const Navbar = () => {
         <div className="link-container" id={showLinks ? "hidden" : ""}>
           <NavLink to="/">Home</NavLink>
           <NavLink to="/create-recipe">Create Recipe</NavLink>
-
-          <NavLink to="/saved-recipes">Saved Recipes</NavLink>
+          {userID ? <NavLink to="/saved-recipes">Saved Recipes</NavLink> : null}
           {!cookies.access_token ? (
             <NavLink to="/auth"> Login/register </NavLink>
           ) : (
