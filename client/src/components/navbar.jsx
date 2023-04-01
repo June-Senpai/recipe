@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import "../App.css";
+import { useGetUserID } from "../hooks/useGetUserID";
 
-export const Navbar = ({ userID }) => {
+export const Navbar = () => {
   const [cookies, setCookies] = useCookies(["access_token"]); //created in auth file
   const navigate = useNavigate();
   const location = useLocation();
   const [showLinks, setShowLinks] = useState(false);
-
+  const userID = useGetUserID();
   const logout = () => {
     setCookies("access_token", ""); //! to logout we r settin cookie empty
     window.localStorage.removeItem("userID"); //! clearing local storage
