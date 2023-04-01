@@ -41,7 +41,6 @@ export const CreateRecipe = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    // console.log(name, value);
     setRecipe({ ...recipe, [name]: value });
   };
 
@@ -59,13 +58,13 @@ export const CreateRecipe = () => {
     toast(message);
   };
 
-  console.log({ cookie });
+  // console.log({ cookie });
   const onSubmit = async (event) => {
     // console.log(recipe);
     event.preventDefault();
     notify("Recipe Created");
     try {
-      await axios.post("http://localhost:3001/recipes", recipe, {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}recipes`, recipe, {
         headers: { Authorization: cookie.access_token },
       });
       setTimeout(() => {

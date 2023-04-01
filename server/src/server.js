@@ -18,7 +18,6 @@ app.use(cors());
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);
 const DB = `mongodb+srv://kj123:${process.env.DB_PASSWORD}@cluster0.mqwqpua.mongodb.net/Cluster0?retryWrites=true&w=majority`;
-console.log({ DB });
 mongoose.connect(DB);
 
 app.listen(port, () => console.log(`server started on ${port} `));

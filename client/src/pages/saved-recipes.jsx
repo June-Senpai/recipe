@@ -11,7 +11,7 @@ export const SavedRecipes = () => {
     const fetchSavedRecipe = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/recipes/savedRecipes/${userID}`
+          `${import.meta.env.VITE_BACKEND_URL}recipes/savedRecipes/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
         // console.log(response.data);

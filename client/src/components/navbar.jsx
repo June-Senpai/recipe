@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import "../App.css";
 
 export const Navbar = () => {
   const [cookies, setCookies] = useCookies(["access_token"]); //created in auth file
   const navigate = useNavigate();
-
+  const location = useLocation();
   const [showLinks, setShowLinks] = useState(false);
 
   const logout = () => {
@@ -14,8 +14,6 @@ export const Navbar = () => {
     window.localStorage.removeItem("userID"); //! clearing local storage
     navigate("/auth"); //takin them to auth again
   };
-
-  console.log(showLinks);
 
   return (
     <div className="navbar">

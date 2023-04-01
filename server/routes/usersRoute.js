@@ -7,7 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 const router = express.Router();
 const secret = process.env.secret;
-console.log({ secret });
+// console.log({ secret });
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
   const user = await UserModel.findOne({ username });
@@ -44,8 +44,8 @@ export { router as userRouter };
 
 export const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
-  console.log(req.body);
-  console.log(req.headers);
+  // console.log(req.body);
+  // console.log(req.headers);
   if (token) {
     jwt.verify(token, secret, (err) => {
       if (err) return res.sendStatus(403);

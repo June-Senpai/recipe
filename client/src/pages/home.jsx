@@ -7,14 +7,15 @@ export const Home = () => {
   const [recipes, setRecipes] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [cookies, _] = useCookies(["access_token"]);
-  console.log({ cookies });
+  // console.log({ cookies });
   const userID = useGetUserID();
-  console.log(userID);
-  //shdasafasfp
+  // console.log(userID);
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/recipes");
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}recipes`
+        );
         setRecipes(response.data);
         // console.log(response.data);
       } catch (err) {
@@ -25,10 +26,12 @@ export const Home = () => {
     const fetchSavedRecipe = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/recipes/savedRecipes/ids/${userID}`
+          `${
+            import.meta.env.VITE_BACKEND_URL
+          }recipes/savedRecipes/ids/${userID}`
         );
         setSavedRecipes(response.data.savedRecipes);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (err) {
         console.error(err);
       }
@@ -41,7 +44,7 @@ export const Home = () => {
   const saveRecipe = async (recipeID) => {
     try {
       const response = await axios.put(
-        "http://localhost:3001/recipes",
+        `${import.meta.env.VITE_BACKEND_URL}recipes`,
         {
           recipeID,
           userID,
@@ -54,7 +57,7 @@ export const Home = () => {
       console.error(err);
     }
   };
-  console.log({ recipes, savedRecipes });
+  // console.log({ recipes, savedRecipes });
 
   const isRecipeSaved =
     cookies.access_token.length > 0
