@@ -1,0 +1,357 @@
+.App {
+  text-align: center;
+  font: size 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-image: url("https://image.freepik.com/free-photo/high-angle-view-fresh-raw-food-white-background_23-2147882052.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  /*! margin:2;
+  padding:2;
+  border-radius: 2px; */
+  /* todo for dark theme
+  /* https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/1975968/1360/906/m1/fpnw/wm1/u327jilz1k5qg9zkqrolwekuw4qqxhwr8olzyznr86nyq1ykghyev1zacxaz4uj3-.jpg?1480686447&s=c83588a72c0940648334b98b3194568b */
+}
+
+.navbar {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  /* background-color: rgb(7, 30, 56); */
+}
+
+/* ! wat leftside n right 50% flex means both r coverin up 50/50
+ ! type backgroundcolor: {somecolor} in it to see */
+
+.leftside {
+  /* flex:100%; */
+  /* flex:50%; */
+  /** background-color: blue; */
+
+  /* display: flex; */
+  /* justify-content: center; */
+  /* justify-content: flex-start;
+    align-items: center; */
+  /* padding-left: 25px; */
+
+  flex: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.link-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* !.rightside{
+    flex:50%;
+  } */
+
+a {
+  /* todo had to make this a tag bc it didnt work in navbar */
+  /* !for spacing b/w the links */
+  margin-right: 30px;
+  /*! tis text decoration shld remove all the underline statement */
+  text-decoration: none;
+  color: #f09494;
+  /* color: rgb(241, 240, 255); */
+  /* border-bottom: 3px solid blue; */
+  display: flex;
+  transition: all 0.5s ease-in-out;
+}
+
+a:hover {
+  border-bottom: 3px solid rgb(206, 212, 31);
+  color: cornflowerblue;
+}
+
+button:hover {
+  /* *so whenever u go on the button/like take mouse n hover over it */
+  /* *it converts it to pointer */
+  cursor: pointer;
+}
+
+.navbar .leftside .sidebutton {
+  display: none;
+  margin-left: 20px;
+  font-size: 50px;
+}
+
+.navbar .leftside button {
+  /* all: unset; */
+  border-radius: 50px;
+}
+
+@media only screen and (max-width: 840px) {
+  .navbar .leftside a {
+    font-size: 20px;
+  }
+  .auth-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+  }
+  .form1 {
+    margin-top: 300px;
+    margin-right: 430px;
+  }
+  .logout {
+    width: 80px;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .navbar .leftside .sidebutton {
+    display: flex;
+    z-index: 10;
+
+    background-color: rgb(23, 143, 235);
+  }
+  .navbar .link-container {
+    display: none;
+  }
+
+  .navbar .leftside #hidden {
+    /* todo if u want ur navbar below then do absolute */
+    position: absolute;
+    left: 0px;
+    top: 0;
+    height: auto;
+    max-height: 230px;
+    width: 100%;
+    max-height: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #a2a3b1;
+  }
+  .auth {
+    margin-top: 100px;
+  }
+}
+
+.leftside a {
+  margin: 10px;
+  font-size: 45px;
+}
+.logout {
+  background-color: rgb(157, 210, 130);
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  margin-top: 15px;
+  border: none;
+  cursor: pointer;
+  margin-left: 50px;
+  transition: all 0.3s ease-in-out;
+  /* font-size: 28px; */
+}
+.logout:hover {
+  background-position: 65px 5px;
+  text-indent: 15px;
+  animation: infinite;
+  background-color: rgba(235, 115, 115, 0.815);
+}
+
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  width: 400px;
+  color: rgba(120, 117, 117, 0.792);
+  height: 300px;
+  font-size: larger;
+}
+.create-recipe {
+  font-size: larger;
+}
+label:hover {
+  color: cornflowerblue;
+}
+
+#logo {
+  font-family: "Lily Script One", cursive;
+  font-size: 30px;
+  font-weight: bold;
+  color: rgba(120, 117, 117, 0.792);
+}
+
+#logo:hover {
+  color: cornflowerblue;
+}
+
+.auth-container label,
+.create-recipe label {
+  font-size: x-large;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.create-recipe input {
+  border-radius: 10px;
+  height: 20px;
+  padding: 15px;
+  margin: auto;
+}
+
+.create-recipe textarea,
+.create-recipe input {
+  border-radius: 10px;
+  font-size: x-large;
+  margin: 10px;
+}
+.create-recipe .imageUrl {
+  width: 350px;
+}
+
+.auth-container input {
+  /* margin: 15px; */
+  width: 80%;
+  height: 20px;
+  border: 2px solid #bbb;
+  border-radius: 20px;
+  font-size: larger;
+}
+
+.auth-container input:focus,
+.create-recipe input:focus {
+  outline: solid 3px cornflowerblue;
+}
+.auth-container input:hover,
+.create-recipe input:hover {
+  outline: solid 3px rgb(181, 247, 27);
+}
+.create-recipe textarea:focus {
+  outline: solid 3px cornflowerblue;
+}
+.create-recipe textarea:hover {
+  outline: solid 3px rgb(181, 247, 27);
+}
+
+.auth-container button,
+.create-recipe .formSubmit {
+  margin: 30px;
+  background: #1abc9c;
+  border: none;
+  color: white;
+  font-size: larger;
+  border-radius: 20px;
+}
+.auth-container button:hover,
+.create-recipe .formSubmit button:hover {
+  opacity: 0.8;
+  border-color: cornflowerblue;
+}
+.auth-container button:active {
+  opacity: 0.6;
+}
+
+.create-recipe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  color: rgba(120, 117, 117, 0.792);
+  margin: 80px;
+  width: 400px;
+}
+.create-recipe form {
+  display: flex;
+  flex-direction: column;
+}
+.button1 {
+  /* align-items: center;
+  justify-content: center; */
+  margin-left: 35px;
+  background-color: rgb(122, 160, 174);
+  width: 100px;
+}
+.create-recipe button {
+  margin: 10px;
+  font-size: larger;
+  border-radius: 10px;
+  opacity: 0.8;
+  transition: 0.8;
+  color: rgba(120, 117, 117, 0.792);
+  padding: auto;
+}
+.create-recipe button:hover {
+  color: rgb(224, 217, 24);
+  opacity: 0.8;
+}
+.create-recipe button:active {
+  opacity: 0.4;
+}
+
+.recipe {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recipe ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recipe li {
+  width: 600px;
+  margin: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe h2 {
+  margin: 0;
+  padding: 10px;
+  color: #1abc9c;
+}
+
+.recipe .instructions {
+  padding: 10px;
+}
+
+.recipe img {
+  width: 80%;
+}
+
+.recipe p {
+  margin: 0;
+  padding: 10px;
+  font-size: larger;
+}
+.recipe .ingredients li {
+  width: auto;
+  font-size: larger;
+}
+.recipe .ingredients li:hover {
+  color: cornflowerblue;
+}
+.recipe button {
+  border-radius: 10px;
+  font-size: larger;
+}
