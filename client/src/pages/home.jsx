@@ -78,7 +78,8 @@ export const Home = () => {
                 <h2>{recipe.name}</h2>
               </div>
 
-              {cookies.access_token.length > 0 ? (
+              {Object.keys(cookies)?.length > 0 &&
+              cookies?.access_token?.length ? (
                 <button
                   onClick={() => saveRecipe(recipe._id)}
                   disabled={isRecipeSaved(recipe._id)}
