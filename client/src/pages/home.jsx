@@ -60,7 +60,7 @@ export const Home = () => {
   // console.log({ recipes, savedRecipes });
   console.log({ cookies });
   const isRecipeSaved =
-    cookies?.access_token?.length > 0
+    Object.keys(cookies)?.length > 0 && cookies?.access_token?.length > 0
       ? (id) => savedRecipes.includes(id)
       : () => false;
   return (
