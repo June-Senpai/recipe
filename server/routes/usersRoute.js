@@ -2,8 +2,12 @@ import express, { json } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import { UserModel } from "../models/UsersModel.js";
-const router = express.Router();
+import dotenv from "dotenv";
 
+dotenv.config();
+const router = express.Router();
+const secret = process.env.secret;
+console.log({ secret });
 router.post("/register", async (req, res) => {
   const { username, password } = req.body;
   const user = await UserModel.findOne({ username });
@@ -32,7 +36,7 @@ router.post("/login", async (req, res) => {
     return res.json({ message: "username or password incorrect try again!" });
   }
   //if done all the steps then
-  const token = jwt.sign({ id: user._id }, "secret");
+  const token = jwt.sign({ id: user._id }, secret);
   res.json({ token, userID: user._id });
 });
 
@@ -43,7 +47,7 @@ export const verifyToken = (req, res, next) => {
   console.log(req.body);
   console.log(req.headers);
   if (token) {
-    jwt.verify(token, "secret", (err) => {
+    jwt.verify(token, secret, (err) => {
       if (err) return res.sendStatus(403);
       next();
     });
