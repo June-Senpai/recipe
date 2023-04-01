@@ -3,12 +3,11 @@ import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
 import { useCookies } from "react-cookie";
 
-export const Home = () => {
+export const Home = ({ userID }) => {
   const [recipes, setRecipes] = useState([]);
   const [savedRecipes, setSavedRecipes] = useState([]);
   const [cookies, _] = useCookies(["access_token"]);
   // console.log({ cookies });
-  const userID = useGetUserID();
   // console.log(userID);
   console.log({ recipes });
   useEffect(() => {

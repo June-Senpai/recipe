@@ -3,7 +3,7 @@ import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import "../App.css";
 
-export const Navbar = () => {
+export const Navbar = ({ userID }) => {
   const [cookies, setCookies] = useCookies(["access_token"]); //created in auth file
   const navigate = useNavigate();
   const location = useLocation();
