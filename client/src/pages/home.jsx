@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
 import { useCookies } from "react-cookie";
-import { useGetUserID } from "../hooks/useGetUserID";
 
 export const Home = () => {
   const [recipes, setRecipes] = useState([]);
