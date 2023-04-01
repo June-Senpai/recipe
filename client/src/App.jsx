@@ -5,7 +5,7 @@ import { CreateRecipe } from "./pages/create-recipe";
 import { SavedRecipes } from "./pages/saved-recipes";
 import { Auth } from "./pages/auth";
 import { Navbar } from "./components/navbar";
-import { useGetUserID } from "../hooks/useGetUserID";
+import { useGetUserID } from "./hooks/useGetUserID";
 const userID = useGetUserID();
 function App() {
   return (
