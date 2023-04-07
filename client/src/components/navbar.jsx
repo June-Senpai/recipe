@@ -1,21 +1,37 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import "../App.css";
 import { useGetUserID } from "../hooks/useGetUserID";
+function getActiveClass(route, location) {
+  // console.log({ route });
+  switch (location.pathname) {
+    case route:
+      return "activeTab";
+      break;
 
-export const Navbar = () => {
+    default:
+      return "tab";
+      break;
+  }
+}
+export const Navbar = ({ setTheme, theme }) => {
   const [cookies, setCookies] = useCookies(["access_token"]); //created in auth file
   const navigate = useNavigate();
   const location = useLocation();
   const [showLinks, setShowLinks] = useState(false);
   const userID = useGetUserID();
   const logout = () => {
-    setCookies("access_token", ""); //! to logout we r settin cookie empty
+    setCookies("access_token", ""); //! to logout we r setting cookie empty
     window.localStorage.removeItem("userID"); //! clearing local storage
     navigate("/auth"); //takin them to auth again
   };
-
+  // console.log({ location });
+  const handleTheme = () => {
+    setTheme((previousTheme) => {
+      return previousTheme === "light" ? "dark" : "light";
+    });
+  };
   return (
     <div className="navbar">
       <div className="leftside">
@@ -34,12 +50,34 @@ export const Navbar = () => {
             />
           )}
         </button>
+
         <div className="link-container" id={showLinks ? "hidden" : ""}>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/create-recipe">Create Recipe</NavLink>
-          {userID ? <NavLink to="/saved-recipes">Saved Recipes</NavLink> : null}
+          <NavLink
+            data-text="Home"
+            className={getActiveClass("/", location)}
+            to="/"
+          >
+            Home
+          </NavLink>
+          <NavLink
+            className={getActiveClass("/create-recipe", location)}
+            to="/create-recipe"
+          >
+            Create Recipe
+          </NavLink>
+          {userID ? (
+            <NavLink
+              className={getActiveClass("/saved-recipes", location)}
+              to="/saved-recipes"
+            >
+              Saved Recipes
+            </NavLink>
+          ) : null}
           {!cookies.access_token ? (
-            <NavLink to="/auth"> Login/register </NavLink>
+            <NavLink className={getActiveClass("/auth", location)} to="/auth">
+              {" "}
+              Login/register{" "}
+            </NavLink>
           ) : (
             <button className="logout" onClick={logout}>
               Logout
@@ -47,6 +85,9 @@ export const Navbar = () => {
           )}
         </div>
       </div>
+      <button onClick={handleTheme} className="themeBtn">
+        {theme === "dark" ? "🌞" : "🌛"}
+      </button>
 
       <div className="rightside">{/* //*make a search button in here */}</div>
     </div>

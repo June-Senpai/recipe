@@ -58,4 +58,19 @@ router.get("/savedRecipes/:userID", async (req, res) => {
   }
 });
 
+// router.post("/delete", verifyToken, async (req, res) => {
+//   try {
+//     const user = await UserModel.findOne({ _id: req.body.id });
+//     user.set({ savedRecipes });
+//     user.savedRecipes = user.savedRecipes.filter(
+//       (recipe) => recipe.toString() !== req.body.recipeID
+//     );
+//     console.log({ user, savedRecipes: user.savedRecipes });
+//     await user.save();
+//     res.sendStatus(200);
+//   } catch (err) {
+//     res.json(err);
+//   }
+// });
+
 export { router as recipesRouter };

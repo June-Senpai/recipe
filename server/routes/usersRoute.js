@@ -45,6 +45,7 @@ export { router as userRouter };
 export const verifyToken = (req, res, next) => {
   const token = req.headers.authorization;
   // console.log(req.body);
+  // console.log(token);
   // console.log(req.headers);
   if (token) {
     jwt.verify(token, secret, (err) => {

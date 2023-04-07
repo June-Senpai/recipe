@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
+import { useCookies } from "react-cookie";
+import image from "../public/kOnzy.gif";
 
 export const SavedRecipes = () => {
   const [savedRecipes, setSavedRecipes] = useState([]);
-
+  const [cookies, _] = useCookies(["access_token"]);
   const userID = useGetUserID();
 
   useEffect(() => {
@@ -22,8 +24,31 @@ export const SavedRecipes = () => {
     fetchSavedRecipe();
   }, []);
 
+  const handleDelete = async (id) => {
+    // console.log({ token: cookies.access_token });
+    try {
+      await axios.post(
+        // `${import.meta.env.VITE_BACKEND_URL}recipes/delete`,
+        "http://localhost:4001/recipes/delete",
+        {
+          id: userID,
+          recipeID: id,
+        },
+
+        { headers: { authorization: cookies.access_token } }
+      );
+      setSavedRecipes(savedRecipes.filter((recipe) => recipe._id !== id));
+    } catch {}
+  };
+  if (Object.keys(savedRecipes)?.length < 1) {
+    return (
+      <div className="loading-container">
+        <img src={image} width={100} />
+      </div>
+    );
+  }
   return (
-    <div>
+    <div className="saved-recipes">
       <h1>Saved Recipes</h1>
       <div className="recipe">
         <ul>
@@ -33,7 +58,7 @@ export const SavedRecipes = () => {
               <div>
                 <h2>{recipe.name}</h2>
               </div>
-
+              {/* <button onClick={() => handleDelete(recipe._id)}>Delete</button> */}
               <div className="instructions">
                 <p>{recipe.instructions}</p>
               </div>

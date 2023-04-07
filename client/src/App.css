@@ -1,4 +1,4 @@
-.App {
+.app {
   text-align: center;
   font: size 100px;
   display: flex;
@@ -10,10 +10,6 @@
 }
 
 body {
-  background-image: url("https://image.freepik.com/free-photo/high-angle-view-fresh-raw-food-white-background_23-2147882052.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   margin: 0;
   padding: 0;
   /*! margin:2;
@@ -21,13 +17,14 @@ body {
   border-radius: 2px; */
   /* todo for dark theme
   /* https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/1975968/1360/906/m1/fpnw/wm1/u327jilz1k5qg9zkqrolwekuw4qqxhwr8olzyznr86nyq1ykghyev1zacxaz4uj3-.jpg?1480686447&s=c83588a72c0940648334b98b3194568b */
+  position: relative;
 }
 
 .navbar {
   display: flex;
   width: 100%;
   height: 10%;
-  /* background-color: rgb(7, 30, 56); */
+  background-color: rgb(7, 30, 56);
 }
 
 /* ! wat leftside n right 50% flex means both r coverin up 50/50
@@ -65,17 +62,18 @@ a {
   margin-right: 30px;
   /*! tis text decoration shld remove all the underline statement */
   text-decoration: none;
-  color: #f09494;
+  color: white;
+  /* color: #050000; */
   /* color: rgb(241, 240, 255); */
   /* border-bottom: 3px solid blue; */
   display: flex;
   transition: all 0.5s ease-in-out;
+  font-size: 2.3rem;
 }
 
-a:hover {
-  border-bottom: 3px solid rgb(206, 212, 31);
+/* a:hover {
   color: cornflowerblue;
-}
+} */
 
 button:hover {
   /* *so whenever u go on the button/like take mouse n hover over it */
@@ -94,9 +92,14 @@ button:hover {
   border-radius: 50px;
 }
 
-@media only screen and (max-width: 840px) {
+@media only screen and (max-width: 900px) {
   .navbar .leftside a {
     font-size: 20px;
+    margin: 20px 0px;
+  }
+  .link-container {
+    display: flex;
+    gap: 1em;
   }
   .auth-container {
     display: flex;
@@ -109,6 +112,8 @@ button:hover {
   }
   .logout {
     width: 80px;
+    margin: 15px 0;
+    background-color: rgb(6, 243, 33);
     font-size: 15px;
   }
 }
@@ -117,7 +122,6 @@ button:hover {
   .navbar .leftside .sidebutton {
     display: flex;
     z-index: 10;
-
     background-color: rgb(23, 143, 235);
   }
   .navbar .link-container {
@@ -136,27 +140,36 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #a2a3b1;
+    margin-top: 2em;
+    background-color: rgb(7, 30, 56);
   }
   .auth {
     margin-top: 100px;
   }
-}
 
-.leftside a {
-  margin: 10px;
-  font-size: 45px;
-}
-.logout {
-  background-color: rgb(157, 210, 130);
-  color: rgb(255, 255, 255);
-  padding: 10px;
-  margin-top: 15px;
-  border: none;
-  cursor: pointer;
-  margin-left: 50px;
-  transition: all 0.3s ease-in-out;
-  /* font-size: 28px; */
+  .themeBtn {
+    z-index: 999;
+  }
+
+  .leftside a {
+    margin: 25px;
+    font-size: 35px;
+  }
+  .logout {
+    background-color: rgb(157, 210, 130);
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    margin-top: 25px;
+    border: none;
+    cursor: pointer;
+    margin-left: 50px;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 25px;
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    /* font-size: 28px; */
+  }
 }
 .logout:hover {
   background-position: 65px 5px;
@@ -275,7 +288,7 @@ label:hover {
   align-items: center;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
   color: rgba(120, 117, 117, 0.792);
   margin: 80px;
   width: 400px;
@@ -354,4 +367,74 @@ label:hover {
 .recipe button {
   border-radius: 10px;
   font-size: larger;
+}
+
+.activeTab {
+  border-bottom: 4px solid cornflowerblue;
+}
+
+.tab {
+  position: relative;
+  z-index: 1;
+  transition: 300ms;
+}
+.tab::before {
+  position: absolute;
+  height: 4px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 300ms;
+}
+
+.tab:hover {
+  -webkit-text-stroke: 1px rgb(67, 20, 237);
+}
+
+.tab:hover::before {
+  transform: scaleX(1);
+}
+
+.test1 {
+  background-color: #1abc9c;
+}
+.themeBtn {
+  height: 50px;
+  margin: 20px;
+  width: 50px;
+  font-size: x-large;
+  background-color: transparent;
+  border: 0.25px solid white;
+  border-radius: 20px;
+}
+
+.saved-recipes {
+  margin-top: 100px;
+}
+.dark {
+  background-color: rgb(49, 51, 56);
+  color: white;
+  min-height: 100dvh;
+}
+.logout {
+  background-color: rgb(157, 210, 130);
+  width: 70px;
+}
+.dark .create-recipe {
+  box-shadow: 5px 5px 15px rgb(252, 252, 252);
+}
+.dark .saved-recipes {
+  box-shadow: 5px 5px 15px rgb(252, 252, 252);
+}
+.dark .recipe {
+  box-shadow: 5px 5px 15px rgb(252, 252, 252);
+}
+.loading-container {
+  display: grid;
+  place-items: center;
+  font-size: 50px;
+  height: 70vh;
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
 import { useCookies } from "react-cookie";
+import image from "../public/kOnzy.gif";
 
 export const Home = () => {
   const [recipes, setRecipes] = useState([]);
@@ -10,7 +11,7 @@ export const Home = () => {
   const userID = useGetUserID();
   // console.log({ cookies });
   // console.log(userID);
-  console.log({ recipes });
+  // console.log({ recipes });
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
@@ -66,6 +67,13 @@ export const Home = () => {
     Object.keys(cookies)?.length > 0 && cookies?.access_token?.length > 0
       ? (id) => savedRecipes.includes(id)
       : () => false;
+  if (Object.keys(recipes)?.length < 1) {
+    return (
+      <div className="loading-container">
+        <img src={image} width={100} />
+      </div>
+    );
+  }
   return (
     <div>
       <h1>Recipes</h1>
